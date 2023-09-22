@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Tic Tac Toe</title>
+</head>
+  <body>
+    <div class="themes light">
+      <button onclick="darkTheme()" class="dark-theme-button">Dark Theme</button>
+      <button onclick="lightTheme()" class="light-theme-button">Light Theme</button>
+    </div>
+    <div class="main">
+      <div class="board light" id="board">
+        <div onclick="draw(0); "id="cell1" class="cell"></div>
+        <div onclick="draw(1);"id="cell2" class="cell"></div>
+        <div onclick="draw(2);"id="cell3" class="cell"></div>
+        <div onclick="draw(3);"id="cell4" class="cell"></div>
+        <div onclick="draw(4);"id="cell5" class="cell"></div>
+        <div onclick="draw(5);" id="cell6" class="cell"></div>
+        <div onclick="draw(6);" id="cell7" class="cell"></div>
+        <div onclick="draw(7);" id="cell8" class="cell"></div>
+        <div onclick="draw(8);"id="cell9" class="cell"></div>
+      </div>
+    </div>
+    <div class="scoreboard light">
+      <p><b>X</b> wins:<i id="x-score">3</i></p>
+      <p><b>O</b> wins:<i id="o-score">5</i></p>
+    </div> 
+    <div class="reset-div light"><button>Reset Score</button></div>
+    <div class="winning-message" data-winning-message>
+      <div class="winning-message-text"></div>
+      <button onclick="restartGame();" id="restart-button">Restart</button>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

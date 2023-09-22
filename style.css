@@ -1,0 +1,295 @@
+*,*::after,*::before{
+  box-sizing: border-box;
+  margin: 0;
+  transition: color 0.3s, background-color 0.3s, opacity 0.3s, border 0.3s, color 0.3s;
+}
+
+:root{
+  --cell-size: 100px;
+  --mark-size: calc(var(--cell-size)* .9);
+}
+body{
+  margin: 0;  
+}
+
+b{
+  font-size: 2.5rem;
+}
+
+
+
+.themes.dark button{
+  border: 2px solid white;
+  color: white;
+  background-color: rgb(36, 36, 36);
+}
+
+.themes.light button{
+  border: 2px solid black;
+}
+
+.themes button{
+  margin: 10px;
+  height: 25px;
+  width: 100px;
+  font-family:monospace;
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: width 0.15s;
+}
+
+.themes button:hover{
+  width: 115px;
+}
+.themes{
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding-top:10px;
+}
+
+.main{
+  display: flex;
+  justify-content: center;
+}
+
+.board{
+  width: 400px;
+  height: 400px;
+  display: grid; 
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3,auto);
+}
+
+.board.light .cell{
+  border-color: black;
+}
+
+.board.dark .cell{
+  border-color: white;
+}
+
+.cell{
+  height:var(--cell-size);
+  width: var(--cell-size);
+  display: inline-block;
+  display: flex;
+  border:1.5px solid black;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+
+
+
+.cell:nth-child(n-1){
+  border-top: none;
+}
+.cell:nth-child(3n){
+  border-right: none;
+}
+.cell:nth-child(n+7){
+  border-bottom: none;
+}
+.cell:nth-child(3n+1){
+  border-left: none;
+}
+
+
+
+.board.light .cell.circle::after{
+  background-color: white;
+}
+.board.dark .cell.circle::after{
+  background-color: rgb(36, 36, 36);
+}
+
+.board.light .cell.x::before ,
+.board.light .cell.x::after ,
+.board.light .cell.circle::before 
+{
+  background-color: black;
+}
+
+.board.dark .cell.x::before ,
+.board.dark .cell.x::after ,
+.board.dark .cell.circle::before
+ {
+  background-color: white;
+}
+
+
+.board.x.light .cell:not(.x):not(.circle):hover::before,
+.board.x.light .cell:not(.x):not(.circle):hover::after{
+  background-color: lightgray;
+}
+
+.board.x.dark .cell:not(.x):not(.circle):hover::before,
+.board.x.dark .cell:not(.x):not(.circle):hover::after{
+  background-color: rgb(118, 118, 118);
+}
+
+.board.circle.light .cell:not(.x):not(.circle):hover::before,
+.board.circle.light .cell:not(.x):not(.circle):hover::after{
+  background-color: lightgray;
+}
+
+.board.circle.dark .cell:not(.x):not(.circle):hover::before,
+.board.circle.dark .cell:not(.x):not(.circle):hover::after{
+  background-color: rgb(118, 118, 118);
+}
+
+
+.board.circle.light .cell:not(.x):not(.circle):hover::after{
+  background-color: white;
+}
+.board.circle.dark .cell:not(.x):not(.circle):hover::after{
+  background-color:rgb(36, 36, 36);
+}
+
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after{
+  position: absolute;
+  content:'';
+  width: calc(var(--mark-size)*.15);
+  height: var(--mark-size);
+ 
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before{
+  transform: rotate(45deg);
+}
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after{
+  transform: rotate(-45deg);
+}
+
+
+
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after{
+  position: absolute;
+  content:'';
+  border-radius: 50%;
+}
+
+.cell.circle::before,
+.board.circle .cell:not(.x):not(.circle):hover::before{
+  width: var(--mark-size);
+  height:var(--mark-size);
+}
+
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::after{
+  width: calc(var(--mark-size)*.75);
+  height:  calc(var(--mark-size)*.75);
+}
+
+.scoreboard{
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  justify-items: center;
+  font-family: monospace;
+  font-size: 2rem;
+}
+.scoreboard.light p{
+  margin: 0;
+  border: 2px solid black;
+  color:black;
+  padding: 5px 10px;
+}
+.scoreboard.dark p{
+  margin: 0;
+  border: 2px solid white;
+  color: white;
+  padding: 5px 10px;
+}
+
+.reset-div{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.reset-div.light button{
+  color: black;
+  background:white;
+  border-radius: 8px;
+  border: 3px dotted black;
+  font-family: monospace;
+  font-size: 1rem;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.reset-div.dark button{
+  color: white;
+  background:rgb(36, 36, 36);
+  border-radius: 8px;
+  border: 3px dotted white;
+  font-family: monospace;
+  font-size: 1rem;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.reset-div.light button:hover{
+  color: rgb(253, 0, 0);
+  border-color: rgb(255, 0, 0);
+}
+.reset-div.dark button:hover{
+  opacity: 0.6;
+}
+
+
+.winning-message{
+  display: none;
+  position: fixed;
+  left:0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0,0,0,.9);
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 5rem; 
+}
+
+.winning-message button{
+  font-size: 3rem;
+  background-color: white;
+  border:1px dashed black;
+  padding:.25em .5em;
+  cursor: pointer;
+  margin-left:1em;
+  border-radius: 2px;
+  border-width: 3px;
+}
+
+.winning-message button:hover{
+  background-color: black;
+  color: white;
+  border-color: white;
+
+}
+
+.winning-message.show{
+  display: flex;
+}
